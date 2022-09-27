@@ -5,5 +5,10 @@
 
 
 ### ТРЕБОВАНИЯ
-1. pip install -r requirements.py (в созданной виртуальной среде)
-2. py -m streamlit run C:\path\to\BI_system\BI-system.py 
+(создали виртуальную среду и находимся в ней)
+1. Скачиваем необходимые библиотеки
+pip install -r requirements.py 
+2. Запускаем веб-приложение
+py -m streamlit run C:\path\to\BI_system\BI-system.py 
+ИЛИ
+streamlit run C:\path\to\BI_system\BI-system.py 
