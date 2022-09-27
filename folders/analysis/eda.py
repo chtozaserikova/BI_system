@@ -46,7 +46,15 @@ def start_eda():
     pval = result['p-value'].tolist()
     psig = 0.05
     extreme = 0.95
-    # annot =
+    st.header("Матрица корреляций по Пирсону")
     sns.heatmap(df.corr(method='pearson'), annot=True, cbar = True, cmap='Blues')
+    fig.tight_layout()
+    st.pyplot(fig)
+    st.header("Матрица корреляций по Кендаллу")
+    sns.heatmap(df.corr(method='kendall'), annot=True, cbar = True, cmap='Blues')
+    fig.tight_layout()
+    st.pyplot(fig)
+    st.header("Матрица корреляций по Спирману")
+    sns.heatmap(df.corr(method='spearman'), annot=True, cbar = True, cmap='Blues')
     fig.tight_layout()
     st.pyplot(fig)

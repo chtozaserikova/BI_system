@@ -9,9 +9,9 @@ def start_dataset():
     rows = df.shape[0]
     columns = df.shape[1]
 
-    st.write("There are %d rows and %d columns in the dataset."%(rows,columns))
+    st.write("В данном наборе данных %d строк и %d столбцов (признаков)"%(rows,columns))
 
-    st.header("Statistics of dataframe")
+    st.header("Статистика")
     st.write(df.describe())
 
     columns = ['Асимметрия', 'Эксцесс', 'Нормальное распределение (1-да, 0-нет)', 'Нижняя граница доверительного интервала', 'Верхняя граница доверительного интервала']
@@ -20,6 +20,3 @@ def start_dataset():
         to_append = list(df[col])
         dataframe = dataframe.append(pd.DataFrame([list(statistic(to_append))], columns=columns), ignore_index=True)
     st.dataframe(dataframe.T)
-    # for col in df.columns:
-    #     st.write("Info about %s:"%(col))
-    #     st.write(statistic(df[col]))

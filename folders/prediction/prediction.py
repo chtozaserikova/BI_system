@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 from sklearn.model_selection import train_test_split
-import folders.prediction.naive_bayes as naive_bayes
 import folders.prediction.decision_tree as decision_tree
 
 
@@ -43,8 +42,7 @@ def start_prediction():
 
   user_input_variables = get_user_data()
 
-  options = st.sidebar.radio('Какую модель используем?',('Naive Bayes', 'Decision Tree'))
-  if options == 'Naive Bayes':
-    naive_bayes.start_naive_bayes(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
+  options = st.sidebar.radio('Какую модель используем?',('Decision Tree'))
+  
   if options == 'Decision Tree':
     decision_tree.start_decision_tree(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
