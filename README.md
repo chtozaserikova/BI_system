@@ -6,4 +6,4 @@
 
 ### ТРЕБОВАНИЯ
 1. pip install -r requirements.py (в созданной виртуальной среде)
-2. streamlit run path\to\BI_system\BI-system.py 
+2. py -m streamlit run C:\path\to\BI_system\BI-system.py 

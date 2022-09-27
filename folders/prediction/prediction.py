@@ -42,7 +42,7 @@ def start_prediction():
 
   user_input_variables = get_user_data()
 
-  options = st.sidebar.radio('Какую модель используем?',('Decision Tree'))
-  
-  if options == 'Decision Tree':
-    decision_tree.start_decision_tree(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
+  # options = st.sidebar.radio('Какую модель используем?',( ,'Decision Tree'))
+  # if options == 'Decision Tree':
+  #   decision_tree.start_decision_tree(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
+  decision_tree.start_decision_tree(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)

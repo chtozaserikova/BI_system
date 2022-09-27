@@ -11,7 +11,3 @@ if selection1 == 'Analytics':
     analytics.start_analytics()        
 if selection1 == 'Prediction':
     prediction.start_prediction() 
-
-
-
-
