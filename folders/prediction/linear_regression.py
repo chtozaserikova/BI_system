@@ -17,7 +17,7 @@ def start_linear(dataset_drop_outcome, outcome, x_train,y_train,x_test,y_test,us
     st.write(lin_model.intercept_)
 
     # точность классификации
-    st.subheader('КОэффициент при x: ')
+    st.subheader('Коэффициент при x: ')
     st.write(lin_model.coef_)
 
     # точность классификации
@@ -28,7 +28,6 @@ def start_linear(dataset_drop_outcome, outcome, x_train,y_train,x_test,y_test,us
     prediction_tree=lin_model.predict(user_input_variables)
     st.subheader('Предсказание:')
     st.write(prediction_tree)
-    # if round(prediction_tree.astype(np.float)) == 0:
     for x in prediction_tree:
         if np.round(x) == 0:
             st.write("Negative")

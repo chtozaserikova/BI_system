@@ -3,6 +3,7 @@ import streamlit as st
 from sklearn.model_selection import train_test_split
 import folders.prediction.decision_tree as decision_tree
 import folders.prediction.linear_regression as linear_regression
+import folders.prediction.logistic_regression as logistic_regression
 
 
 def start_prediction():
@@ -41,9 +42,10 @@ def start_prediction():
 
   user_input_variables = get_user_data()
 
-  options = st.sidebar.radio('Какую модель используем?',('Linear Regression' ,'Decision Tree'))
+  options = st.sidebar.radio('Какую модель используем?',('Linear Regression' ,'Decision Tree', 'Logistic Regression'))
   if options == 'Decision Tree':
     decision_tree.start_decision_tree(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
+  if options == 'Logistic Regression':
+    logistic_regression.start_logistic(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
   else:
     linear_regression.start_linear(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
-  # decision_tree.start_decision_tree(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
