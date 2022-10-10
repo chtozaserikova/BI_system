@@ -10,7 +10,7 @@
 2. **Statistics**: Mode, Median and Mean, Interquartile Range and Box Plot, Variance and Standard deviation, Z-scores, Contingency Table, Pearson’s, Distribution (Normal/Binomial/Poisson), Inferential Statistics, Confidence Intervals, Hypothesis Testing
 
 3. **Analytics**: Summarizing and Visualizing Data (graphs, matrix)
-![экран веб-приложения]("C:\Users\Sveta\Downloads\jJE8aCJxr6Y.jpg")
+![экран веб-приложения]("folders\home\screenshot.jpg")
 
 ## ТРЕБОВАНИЯ
 (создали виртуальную среду и находимся в ней)
