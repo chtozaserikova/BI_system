@@ -42,10 +42,10 @@ def start_prediction():
 
   user_input_variables = get_user_data()
 
-  options = st.sidebar.radio('Какую модель используем?',('Linear Regression' ,'Decision Tree', 'Logistic Regression'))
+  options = st.sidebar.radio('Какую модель используем?', ('Linear Regression','Decision Tree', 'Logistic Regression'))
   if options == 'Decision Tree':
     decision_tree.start_decision_tree(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
-  if options == 'Logistic Regression':
+  elif options == 'Logistic Regression':
     logistic_regression.start_logistic(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)
   else:
     linear_regression.start_linear(dataset_drop_outcome, outcome,  x_train, y_train, x_test, y_test, user_input_variables)

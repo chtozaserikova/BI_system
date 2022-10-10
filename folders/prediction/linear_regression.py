@@ -12,17 +12,17 @@ def start_linear(dataset_drop_outcome, outcome, x_train,y_train,x_test,y_test,us
 
     st.header("Linear Regression")
 
-    # точность классификации
+    # свободный член
     st.subheader('Сдвиг: ')
     st.write(lin_model.intercept_)
 
-    # точность классификации
+    # k независимых переменных
     st.subheader('Коэффициент при x: ')
     st.write(lin_model.coef_)
 
     # точность классификации
-    st.subheader('Среднеквадратичная ошибка: ')
-    st.write(mean_squared_error(y_test, lin_model.predict(x_test)))
+    st.subheader('Средняя абсолютная ошибка: ')
+    st.write(mean_absolute_error(y_test, lin_model.predict(x_test)))
 
 
     prediction_tree=lin_model.predict(user_input_variables)
@@ -33,9 +33,3 @@ def start_linear(dataset_drop_outcome, outcome, x_train,y_train,x_test,y_test,us
             st.write("Negative")
         else:
             st.write("Positive")
-  
-
-# def calc(slope, intercept, hours):
-#     return slope*hours+intercept
-
-# score = calc(regressor.coef_, regressor.intercept_, 9.5)

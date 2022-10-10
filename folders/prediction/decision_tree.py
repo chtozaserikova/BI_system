@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 
 def start_decision_tree(dataset_drop_outcome, outcome, x_train,y_train,x_test,y_test,user_input_variables):
 
-    decision_tree_model = DecisionTreeClassifier(criterion='entropy', max_depth=3)
+    decision_tree_model = DecisionTreeClassifier(criterion='entropy', max_depth=7, min_samples_leaf=3, random_state=2022)
     decision_tree_model.fit(x_train, y_train)
 
     st.header("Decision Tree Model")
