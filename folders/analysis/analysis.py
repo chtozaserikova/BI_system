@@ -3,10 +3,31 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
 
-def start_analysis():
+def start_analysis(df):
   st.title("Analysis")
-  df = pd.read_csv("folders/dataset/diabetes.csv")
+  # df = pd.read_csv("folders/dataset/diabetes.csv")
   
+  st.header("Histograms")
+  col1, col2 = st.columns(2)
+  with col1:
+      fig = px.histogram(df, x="Pregnancies", nbins=50, title='PREGNANCIES', labels={"Pregnancies": 'Pregnancies'},width=400, height=400)
+      st.plotly_chart(fig, use_container_width=False, sharing='streamlit')
+
+  with col2:
+      fig = px.histogram(df, x="Age", color='Age', nbins=50, title='AGE', labels={"Age": 'Age'},width=400, height=400)
+      st.plotly_chart(fig, use_container_width=False, sharing='streamlit')
+  
+  
+  col3, col4 = st.columns(2)
+  with col3:
+      fig = px.histogram(df, x="BMI", nbins=50, title='BMI', labels={"BMI": 'BMI'},width=400, height=400)
+      st.plotly_chart(fig, use_container_width=False, sharing='streamlit')
+  with col4:
+      fig = px.histogram(df, x="Outcome", color='Outcome', nbins=50, title='OUTCOME', labels={"Outcome": 'Outcome'},width=400, height=400)
+      st.plotly_chart(fig, use_container_width=False, sharing='streamlit')
+
+
+  st.header("Charts")
   #bar chart
   bar_fig = px.bar(df, x="Age", y="Pregnancies", color='Age', title="AGE X PREGNANCIES",width=800, height=440)
   st.plotly_chart(bar_fig, use_container_width=False, sharing='streamlit')

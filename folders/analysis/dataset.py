@@ -2,9 +2,9 @@ import pandas as pd
 import streamlit as st
 from help import statistic
 
-def start_dataset():
+def start_dataset(df):
     st.title("Dataset")
-    df = pd.read_csv("folders/dataset/diabetes.csv")
+    # df = pd.read_csv("folders/dataset/diabetes.csv")
     st.dataframe(df)
     rows = df.shape[0]
     columns = df.shape[1]

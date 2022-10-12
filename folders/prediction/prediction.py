@@ -6,9 +6,9 @@ import folders.prediction.linear_regression as linear_regression
 import folders.prediction.logistic_regression as logistic_regression
 
 
-def start_prediction():
+def start_prediction(df):
   st.title("Prediction")
-  df = pd.read_csv("folders/dataset/diabetes.csv")
+  # df = pd.read_csv("folders/dataset/diabetes.csv")
   
   #ь деление выборки на тестовую и трейновую
   dataset_drop_outcome = df.drop(['Outcome'],1)

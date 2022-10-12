@@ -10,7 +10,7 @@
 2. **Statistics**: Mode, Median and Mean, Interquartile Range and Box Plot, Variance and Standard deviation, Z-scores, Contingency Table, Pearson’s, Distribution (Normal/Binomial/Poisson), Inferential Statistics, Confidence Intervals, Hypothesis Testing
 
 3. **Analytics**: Summarizing and Visualizing Data (graphs, matrix)
-![экран веб-приложения]("folders\home\screenshot.jpg")
+![экран веб-приложения]("https://github.com/chtozaserikova/BI_system/blob/master/folders/home/screenshot.jpg")
 
 ## ТРЕБОВАНИЯ
 (создали виртуальную среду и находимся в ней)
@@ -24,3 +24,11 @@ py -m streamlit run C:\path\to\BI_system\BI-system.py
 **ИЛИ**
 
 streamlit run C:\path\to\BI_system\BI-system.py 
+
+
+## НУЖНО ДОРАБОТАТЬ
+1. проверить показ фотки в гитхабе 
+2. прописать исключения в функциях с учетом пропущенных значених и cat_columns
+3. переписать вывод графиков и диаграмм с учетом того, что мы не знаем название колонок (или их вообще может не быть)
+4. улучшить метрики в предикшенах (точность 90+)
+5. если 3) сделано, то аналогично переписать функцию start_prediction()
