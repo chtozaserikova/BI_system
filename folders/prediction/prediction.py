@@ -11,21 +11,31 @@ def start_prediction(df):
   # df = pd.read_csv("folders/dataset/diabetes.csv")
   
   #ь деление выборки на тестовую и трейновую
+  df = df[~df.isnull().any(axis=1)]
+  df = df.select_dtypes(include='number')
+
   dataset_drop_outcome = df.drop(['Outcome'],1)
   outcome = df['Outcome']
   x_train, x_test, y_train, y_test = train_test_split(dataset_drop_outcome, outcome, test_size=0.2)
 
 
   def get_user_data():
-    user_pregnancies = st.sidebar.slider("Pregnancies",0, 15, 1)
-    user_glucose = st.sidebar.slider("Glucose", 0, 200, 110)
-    user_blood_pressure = st.sidebar.slider("Blood pressure", 0, 122, 72)
-    user_skin_thickness = st.sidebar.slider("Skin thickness", 0, 99, 20)
-    user_insulin = st.sidebar.slider("Insulin", 0, 900, 30)
-    user_bmi= st.sidebar.slider("BMI", 0.0, 70.0, 15.0)
-    user_dpf = st.sidebar.slider("Diabetes Pedigree Function", 0.0, 3.0, 0.0)
-    user_age = st.sidebar.slider ("Age", 15, 100, 21)
-
+    if 'Pregnancies' in df.columns:
+      user_pregnancies = st.sidebar.slider("Pregnancies",0, 15, 1)
+    if 'Glucose' in df.columns:
+      user_glucose = st.sidebar.slider("Glucose", 0, 200, 110)
+    if 'BloodPressure' in df.columns:
+      user_blood_pressure = st.sidebar.slider("Blood pressure", 0, 122, 72)
+    if 'SkinThickness' in df.columns:
+      user_skin_thickness = st.sidebar.slider("Skin thickness", 0, 99, 20)
+    if 'Insulin' in df.columns:
+      user_insulin = st.sidebar.slider("Insulin", 0, 900, 30)
+    if 'BMI' in df.columns:
+      user_bmi= st.sidebar.slider("BMI", 0.0, 70.0, 15.0)
+    if 'DiabetesPedigreeFunction' in df.columns:
+      user_dpf = st.sidebar.slider("Diabetes Pedigree Function", 0.0, 3.0, 0.0)
+    if 'Age' in df.columns:
+      user_age = st.sidebar.slider ("Age", 15, 100, 21)
 
     user_data = { 'pregnancies': user_pregnancies,
                   'glucose': user_glucose,

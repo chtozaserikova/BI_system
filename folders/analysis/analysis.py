@@ -6,6 +6,8 @@ import plotly.graph_objs as go
 def start_analysis(df):
   st.title("Analysis")
   # df = pd.read_csv("folders/dataset/diabetes.csv")
+  df = df[~df.isnull().any(axis=1)]
+  df = df.select_dtypes(include='number')
   
   st.header("Histograms")
   col1, col2 = st.columns(2)

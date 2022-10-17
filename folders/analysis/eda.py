@@ -12,6 +12,8 @@ from streamlit_pandas_profiling import st_profile_report
 
 def start_eda(df):
     st.title("Exploratory Data Analysis")
+    df = df[~df.isnull().any(axis=1)]
+    df = df.select_dtypes(include='number')
     
     #CORRELATION
     st.header("Матрица корреляций по Пирсону")

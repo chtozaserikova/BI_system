@@ -12,23 +12,17 @@ import statistics
 
 
 def statistic(dataset):
+    dataset = [x for x in dataset if str(x) != 'nan']
+    dataset = list(filter(None, dataset))
     mean = statistics.mean(dataset)
-    # print("Среднее:", mean)
     median = statistics.median(dataset)
-    # print("Медиана:", median)
     quant25 = statistics.quantiles(dataset)[0]
-    # print("Верхний квартиль:", quant25)
     quant75 = statistics.quantiles(dataset)[2]
-    # print("Нижний квантиль:", quant75)
     maximum = max(dataset)
-    # print("Максимум:",maximum)
     minimum = min(dataset)
-    # print('Минимум:', minimum)
     skewness = skew(dataset)
-    # print("Асимметрия:", skewness)
     kurt = kurtosis(dataset)
-    # print("Эксцесс:", kurt)
-
+ 
     '''
     Проверка на нормальность
     '''
@@ -54,20 +48,8 @@ def statistic(dataset):
     se_true = np.sqrt(d/(n-1))/((n-1)**0.5)
     lower = mean - 1.96*se_true
     upper = mean + 1.96*se_true
-    global df
-    # print(f"{alpha*100} confidence interval {lower} and {upper}")
-
+    
     # data = {'Среднее':mean, 'Медиана':median, 'Верхний квартиль': quant25, 'Нижний квантиль':quant75, 'Максимум':maximum, 'Минимум':minimum, 'Асимметрия':skewness, 
     # 'Эксцесс':kurt, 'Нормальное распределение':res, 'Нижняя граница доверительного интервала':lower, 'Верхняя граница доверительного интервала':upper}
 
     return skewness, kurt, res, lower, upper
-
-
-df = pd.read_csv("folders/dataset/diabetes.csv")
-# columns = ['Среднее', 'Медиана', 'Верхний квартиль', 'Нижний квантиль', 'Максимум', 'Минимум', 'Асимметрия', 'Эксцесс', 'Нормальное распределение', 'Нижняя граница дов. интервала', 'Верхняя граница дов. интервала']
-columns = ['Асимметрия', 'Эксцесс', 'Нормальное распределение (1-да, 0-нет)', 'Нижняя граница доверительного интервала', 'Верхняя граница доверительного интервала']
-dataframe = pd.DataFrame(columns = columns)
-for col in df.columns:
-    to_append = list(df[col])
-    dataframe = dataframe.append(pd.DataFrame([list(statistic(to_append))], columns=columns), ignore_index=True)
-print(dataframe)
