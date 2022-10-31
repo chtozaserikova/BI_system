@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
 from scipy.stats import pearsonr, ttest_ind
+import pandas_profiling
 from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 
@@ -31,6 +32,13 @@ def start_eda(df):
     fig.tight_layout()
     st.pyplot(fig)
 
-    st.header('Pandas Profiling Report')
-    pr = ProfileReport(df, explorative=True)
-    st_profile_report(pr)
+    # создаём отчёт в HTML формате
+    profile = ProfileReport(df, title="Первичный анализ данных", explorative=True)
+    st_profile_report(profile)
+    p = profile.to_html()
+
+    st.download_button(
+        label="Скачать HTML файл",
+        file_name="your_report.html",
+        data=p,
+    )

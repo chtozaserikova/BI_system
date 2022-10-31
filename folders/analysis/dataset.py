@@ -22,4 +22,7 @@ def start_dataset(df):
     for col in df.columns:
         to_append = list(df[col])
         dataframe = dataframe.append(pd.DataFrame([list(statistic(to_append))], columns=columns), ignore_index=True)
-    st.dataframe(dataframe.T)
+    
+    dataframeT = dataframe.T
+    dataframeT.rename(columns={"0": "Pregnancies", "1": "Glucose", "2": "BloodPressure", "3": "SkinThickness", "4": "Insulin", "5": "BMI", "6": "DiabetesPedigreeFunction", "7": "Age", "8": "Outcome"})
+    st.dataframe(dataframeT)

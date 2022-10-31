@@ -8,6 +8,11 @@ def start_analysis(df):
   # df = pd.read_csv("folders/dataset/diabetes.csv")
   df = df[~df.isnull().any(axis=1)]
   df = df.select_dtypes(include='number')
+  df.rename(columns={list(df)[0]:'Pregnancies'}, inplace=True)
+  df.rename(columns={list(df)[5]:'BMI'}, inplace=True)
+  df.rename(columns={list(df)[7]:'Age'}, inplace=True)
+  df.rename(columns={list(df)[-1]:'Outcome'}, inplace=True)
+  df.rename(columns={list(df)[4]:'Insulin'}, inplace=True)
   
   st.header("Histograms")
   col1, col2 = st.columns(2)
