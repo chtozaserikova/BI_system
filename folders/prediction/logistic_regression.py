@@ -7,10 +7,10 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 
 def start_logistic(dataset_drop_outcome, outcome, x_train,y_train,x_test,y_test,user_input_variables):
 
-    log_model = LogisticRegression(solver='liblinear', n_jobs=-1, random_state=2022, C=1e4)
+    log_model = LogisticRegression(solver='liblinear', penalty = 'l2', tol = 0.005156437943234173, C = 1.3299881037838264, fit_intercept = True)
     log_model.fit(x_train, y_train)
 
-    st.header("Linear Regression")
+    st.header("Logistic Regression")
 
     # свободный член
     st.subheader('Сдвиг: ')
