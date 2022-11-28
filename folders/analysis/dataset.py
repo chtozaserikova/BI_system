@@ -17,9 +17,9 @@ def start_dataset(df):
     st.header("Статистика")
     st.write(df.describe())
 
-    columns = ['Асимметрия', 'Эксцесс', 'Нормальное распределение (1-да, 0-нет)', 'Нижняя граница доверительного интервала', 'Верхняя граница доверительного интервала']
+    columns = ['Асимметрия', 'Эксцесс', 'Нормальное распределение (1-да, 0-нет)', 'Нижняя граница доверительного интервала', 'Верхняя граница доверительного интервала', 'Нижняя граница выбросов', 'Верхняя граница выбросов', 'Проверка на аномалии']
     dataframe = pd.DataFrame(columns = columns)
-    for col in df.columns:
+    for col in df.columns[:-1]:
         to_append = list(df[col])
         dataframe = dataframe.append(pd.DataFrame([list(statistic(to_append))], columns=columns), ignore_index=True)
     

@@ -24,7 +24,7 @@
 pip install -r requirements.py 
 2. Запускаем веб-приложение
 
-py -m streamlit run C:\path\to\BI_system\BI-system.py 
+py -m streamlit run C:\Users\Sveta\projects\BI_system\BI-system.py
 
 **ИЛИ**
 

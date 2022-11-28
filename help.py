@@ -22,7 +22,17 @@ def statistic(dataset):
     minimum = min(dataset)
     skewness = skew(dataset)
     kurt = kurtosis(dataset)
- 
+    blowout_min = quant25 - 1.5 * (quant75 - quant25)
+    blowout_max = quant75 + 1.5 * (quant75 - quant25)
+    dataset_clean = dataset.copy()
+    for val in dataset:
+        if blowout_min > val or blowout_max < val:
+            dataset_clean.remove(val)
+    if blowout_min > min(dataset_clean) or blowout_max < max(dataset_clean):
+        blowout = 1
+    else:
+        blowout = 0
+
     '''
     Проверка на нормальность
     '''
@@ -31,7 +41,7 @@ def statistic(dataset):
     E = kurt
     D_A = 6*(n-1)/((n+1)*(n+3))
     D_E = 24*(n-2)*(n-3)*n/((n+5)*(n+3)*(n-1)*(n-1))
-    if (abs(A) <= 3 * math.sqrt((D_A))) and (abs(E) <= 3 * math.sqrt((D_E))):
+    if (abs(A) < 3 * math.sqrt((D_A))) and (abs(E) < 3 * math.sqrt((D_E))):
         # print("Данные распределены нормально")
         res = 1
     else:
@@ -52,4 +62,4 @@ def statistic(dataset):
     # data = {'Среднее':mean, 'Медиана':median, 'Верхний квартиль': quant25, 'Нижний квантиль':quant75, 'Максимум':maximum, 'Минимум':minimum, 'Асимметрия':skewness, 
     # 'Эксцесс':kurt, 'Нормальное распределение':res, 'Нижняя граница доверительного интервала':lower, 'Верхняя граница доверительного интервала':upper}
 
-    return skewness, kurt, res, lower, upper
+    return skewness, kurt, res, lower, upper, blowout_min, blowout_max, blowout
