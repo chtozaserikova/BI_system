@@ -5,6 +5,7 @@ from scipy.stats import skew, kurtosis, t, norm, sem
 import numpy as np
 import pandas as pd
 import statistics
+from scipy import stats
 
 #dataset = [10.22, 4.12, 8.58, 14.79, 2.88, 7.24, 9.67, 10.45, 10.48]
 ## dataset = [float(x) for x in input('Enter a number: ').split()]
@@ -28,7 +29,13 @@ def statistic(dataset):
     for val in dataset:
         if blowout_min > val or blowout_max < val:
             dataset_clean.remove(val)
-    if blowout_min > min(dataset_clean) or blowout_max < max(dataset_clean):
+                  
+    quant25_clean = statistics.quantiles(dataset_clean)[0]
+    quant75_clean = statistics.quantiles(dataset_clean)[2]
+    blowout_min_clean = quant25_clean - 1.5 * (quant75_clean - quant25_clean)
+    blowout_max_clean = quant75_clean + 1.5 * (quant75_clean - quant25_clean)
+    
+    if blowout_min_clean > min(dataset_clean) or blowout_max_clean < max(dataset_clean):
         blowout = 1
     else:
         blowout = 0
