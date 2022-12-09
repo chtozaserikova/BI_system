@@ -26,6 +26,6 @@ pip install -r requirements.py
 
 py -m streamlit run C:\Users\Sveta\projects\BI_system\BI-system.py
 
-**ИЛИ**
+***ИЛИ***
 
 streamlit run C:\path\to\BI_system\BI-system.py 
